@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChauDev — AI That Responds to Leads in 15 Seconds</title>
+  <meta name="description" content="Done-for-you AI that texts new real estate leads instantly, qualifies them with 3 questions, and books the appointment — while you're with other clients.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #07090F;
+      --bg-card:   #0C1120;
+      --bg-raise:  #101827;
+      --border:    rgba(255,255,255,0.07);
+      --blue:      #3B82F6;
+      --blue-dim:  rgba(59,130,246,0.12);
+      --green:     #10B981;
+      --green-dim: rgba(16,185,129,0.12);
+      --text:      #EFF6FF;
+      --muted:     #94A3B8;
+      --dim:       #475569;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { color-scheme: dark; }
+
+    body {
+      font-family: 'Josefin Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── Typography ── */
+    .display {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .heading {
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    /* ── Backgrounds ── */
+    .dot-grid {
+      background-image: radial-gradient(circle, rgba(59,130,246,0.18) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    .noise {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    }
+
+    /* ── Nav ── */
+    .nav-glass {
+      background: rgba(7,9,15,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #047857;
+      color: #fff;
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 13px 26px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover {
+      background: #065F46;
+      transform: translateY(-1px);
+    }
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 12px 26px;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.18);
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.35);
+    }
+    .btn-ghost:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      background: #047857;
+      color: #fff;
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 9px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .btn-nav:hover { background: #065F46; transform: translateY(-1px); }
+    .btn-nav:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+
+    /* ── Feature Cards ── */
+    .feat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      cursor: default;
+      transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
+    }
+    .feat-card:hover {
+      border-color: rgba(59,130,246,0.35);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35), 0 0 24px rgba(59,130,246,0.07);
+    }
+
+    /* ── Step cards ── */
+    .step-connector {
+      position: absolute;
+      left: 23px;
+      top: 52px;
+      bottom: -28px;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(59,130,246,0.4), transparent);
+    }
+
+    /* ── Pricing ── */
+    .pricing-card {
+      position: relative;
+      background: var(--bg-card);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* ── FAQ ── */
+    .faq-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s ease;
+    }
+    .faq-body.open {
+      grid-template-rows: 1fr;
+    }
+    .faq-body > p {
+      overflow: hidden;
+    }
+    .faq-icon {
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .faq-icon.open { transform: rotate(45deg); }
+
+    /* ── SMS Chat ── */
+    .chat-phone {
+      background: #0C1120;
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 24px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 24px rgba(59,130,246,0.06);
+      padding: 4px;
+    }
+    .bubble-agent {
+      background: rgba(59,130,246,0.18);
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 14px 14px 14px 4px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: #DBEAFE;
+      max-width: 85%;
+    }
+    .bubble-lead {
+      background: rgba(16,185,129,0.15);
+      border: 1px solid rgba(16,185,129,0.22);
+      border-radius: 14px 14px 4px 14px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: #D1FAE5;
+      max-width: 75%;
+      align-self: flex-end;
+    }
+    .typing-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 14px;
+      background: rgba(59,130,246,0.14);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 14px 14px 14px 4px;
+    }
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--blue);
+      border-radius: 50%;
+      animation: tdot 1.4s ease-in-out infinite;
+    }
+    .typing-dot:nth-child(2) { animation-delay: 0.18s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.36s; }
+    @keyframes tdot {
+      0%,60%,100% { transform: translateY(0); opacity: 0.35; }
+      30%          { transform: translateY(-5px); opacity: 1; }
+    }
+    .chat-bubble-hidden { opacity: 0; transform: translateY(6px); transition: opacity 0.3s ease, transform 0.3s ease; }
+    .chat-bubble-hidden.shown { opacity: 1; transform: translateY(0); }
+
+    /* ── Scroll reveal ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal.d1 { transition-delay: 0.1s; }
+    .reveal.d2 { transition-delay: 0.2s; }
+    .reveal.d3 { transition-delay: 0.3s; }
+    .reveal.d4 { transition-delay: 0.4s; }
+    .reveal.d5 { transition-delay: 0.5s; }
+
+    /* ── Pulse dot ── */
+    .live-dot {
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: livepulse 2s ease-in-out infinite;
+    }
+    @keyframes livepulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
+      50%      { box-shadow: 0 0 0 5px rgba(16,185,129,0); }
+    }
+
+    /* ── Mobile nav ── */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .chat-bubble-hidden { opacity: 1; transform: none; transition: none; }
+      .typing-dot { animation: none; }
+      .live-dot { animation: none; }
+      .btn-primary:hover, .btn-ghost:hover, .btn-nav:hover { transform: none; }
+      .feat-card:hover { transform: none; }
+    }
+
+    /* ── Stat bar layout ── */
+    .stat-divider { border-left: 1px solid rgba(255,255,255,0.12); }
+    @media (max-width: 767px) { .stat-divider { border-left: none; border-top: 1px solid rgba(255,255,255,0.12); } }
+
+    /* ── Misc ── */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .link-nav {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .link-nav:hover { color: var(--text); }
+    .link-nav:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
+<header class="fixed top-4 left-4 right-4 z-50" role="banner">
+  <nav class="nav-glass rounded-xl px-5 py-3.5 flex items-center justify-between max-w-6xl mx-auto" aria-label="Main navigation">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded" aria-label="ChauDev home">
+      <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+      </div>
+      <span class="heading text-sm tracking-widest">CHAU<span class="text-blue-400">DEV</span></span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#how-it-works" class="link-nav">How It Works</a>
+      <a href="#pricing" class="link-nav">Pricing</a>
+      <a href="#faq" class="link-nav">FAQ</a>
+    </div>
+
+    <!-- CTA + hamburger -->
+    <div class="flex items-center gap-3">
+      <a href="https://calendly.com/sarah-chaudev/30min" class="btn-nav">Book a Demo</a>
+      <button
+        id="menu-toggle"
+        class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg border border-white/10 hover:border-white/25 transition-colors cursor-pointer"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="menu-icon-open" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+        <svg id="menu-icon-close" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="nav-glass rounded-xl mt-2 px-5 py-4 max-w-6xl mx-auto flex-col gap-4" role="navigation" aria-label="Mobile navigation">
+    <a href="#how-it-works" class="link-nav py-1 block">How It Works</a>
+    <a href="#pricing" class="link-nav py-1 block">Pricing</a>
+    <a href="#faq" class="link-nav py-1 block">FAQ</a>
+    <a href="https://calendly.com/sarah-chaudev/30min" class="btn-primary w-full justify-center mt-1">Book a Demo</a>
+  </div>
+</header>
+
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section class="relative min-h-screen flex items-center pt-28 pb-16 px-4 overflow-hidden" aria-labelledby="hero-headline">
+  <!-- Background layers -->
+  <div class="absolute inset-0 dot-grid opacity-40" aria-hidden="true"></div>
+  <div class="absolute inset-0 noise" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#07090F]" aria-hidden="true"></div>
+  <!-- Blue radial glow -->
+  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-blue-500/5 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+  <div class="relative max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+    <!-- Left: Copy -->
+    <div>
+      <!-- Tag -->
+      <div class="tag bg-blue-500/10 border border-blue-500/25 text-blue-400 mb-6 reveal">
+        <div class="live-dot" aria-hidden="true"></div>
+        Running 24/7 · Done For You
+      </div>
+
+      <!-- Headline -->
+      <h1 id="hero-headline" class="display text-[clamp(2rem,5vw,3.4rem)] text-white mb-6 reveal d1">
+        Your leads go cold<br>
+        in <span class="text-blue-400">15 minutes.</span><br>
+        Your AI agent responds<br>
+        in <span class="text-green-400">15 seconds.</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-[clamp(1rem,1.8vw,1.15rem)] text-slate-300 leading-relaxed max-w-lg mb-8 reveal d2" style="font-weight:300;">
+        Done-for-you AI that texts new leads instantly, qualifies them with 3 questions, and books the appointment. All while you're with other clients.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4 items-center reveal d3">
+        <a href="#pricing" class="btn-primary">
+          Start Free 30-Day Pilot
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#how-it-works" class="btn-ghost">
+          See It In Action
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+
+      <!-- Trust micro-copy -->
+      <p class="mt-6 text-xs text-slate-500 reveal d4">No setup fee &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Live in 48 hours</p>
+    </div>
+
+    <!-- Right: SMS chat mockup -->
+    <div class="flex justify-center lg:justify-end reveal d2">
+      <div class="chat-phone w-full max-w-[340px] overflow-hidden" role="img" aria-label="Animated SMS conversation showing AI agent responding to a new lead">
+        <!-- Phone top bar -->
+        <div class="px-5 py-3 flex items-center justify-between border-b border-white/[0.07]">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-white">ChauDev</p>
+              <div class="flex items-center gap-1.5">
+                <div class="live-dot w-1.5 h-1.5" aria-hidden="true"></div>
+                <p class="text-xs text-green-400 font-medium">Active now</p>
+              </div>
+            </div>
+          </div>
+          <div class="text-xs text-slate-500 font-medium">SMS</div>
+        </div>
+
+        <!-- New lead alert -->
+        <div class="px-4 py-2.5 border-b border-white/[0.07]">
+          <div id="chat-alert" class="chat-bubble-hidden flex items-center gap-2" aria-live="polite">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#F59E0B" stroke="none" aria-hidden="true"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            <span class="text-xs text-amber-400 font-semibold">New lead: Marcus T. · 3BR home inquiry</span>
+          </div>
+        </div>
+
+        <!-- Chat messages -->
+        <div id="chat-messages" class="px-4 py-4 flex flex-col gap-3 min-h-[280px]" aria-live="polite" aria-label="SMS conversation">
+          <!-- Messages injected by JS -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PAIN / STATS BAR
+════════════════════════════════════════════ -->
+<section class="bg-black py-14 px-4 border-y border-white/[0.06]" aria-labelledby="stats-heading">
+  <h2 id="stats-heading" class="sr-only">Industry statistics</h2>
+  <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-white/10">
+
+    <div class="px-6 py-8 md:py-4 text-center reveal">
+      <p class="display text-[clamp(2.8rem,6vw,4.5rem)] text-white mb-2">
+        <span class="counter" data-target="78">0</span>%
+      </p>
+      <p class="text-xs font-semibold text-slate-300 uppercase tracking-widest mb-1">of buyers hire</p>
+      <p class="text-xs text-slate-500">the first agent to respond</p>
+    </div>
+
+    <div class="px-6 py-8 md:py-4 text-center reveal d1">
+      <p class="display text-[clamp(2.8rem,6vw,4.5rem)] text-red-400 mb-2">
+        <span class="counter" data-target="15">0</span>hrs
+      </p>
+      <p class="text-xs font-semibold text-slate-300 uppercase tracking-widest mb-1">average agent response</p>
+      <p class="text-xs text-slate-500">The lead is gone in 15 minutes</p>
+    </div>
+
+    <div class="px-6 py-8 md:py-4 text-center reveal d2">
+      <p class="display text-[clamp(2.8rem,6vw,4.5rem)] text-green-400 mb-2">
+        15s
+      </p>
+      <p class="text-xs font-semibold text-slate-300 uppercase tracking-widest mb-1">your AI responds</p>
+      <p class="text-xs text-slate-500">Every lead. Every time. 24/7.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════ -->
+<section id="how-it-works" class="py-24 px-4" aria-labelledby="hiw-heading">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Section header -->
+    <div class="text-center mb-16 reveal">
+      <div class="tag bg-blue-500/10 border border-blue-500/25 text-blue-400 mb-4 inline-flex">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        The Process
+      </div>
+      <h2 id="hiw-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-white mb-4">
+        Three steps. Zero effort from you.
+      </h2>
+      <p class="text-slate-400 text-base leading-relaxed max-w-xl mx-auto" style="font-weight:300;">
+        From new lead to booked appointment without you lifting a finger.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="flex flex-col gap-0">
+
+      <!-- Step 1 -->
+      <div class="relative flex gap-6 pb-12 reveal">
+        <div class="flex flex-col items-center flex-shrink-0">
+          <div class="w-12 h-12 rounded-full bg-blue-500/12 border border-blue-500/35 flex items-center justify-center z-10 relative" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="w-px flex-1 mt-3 bg-gradient-to-b from-blue-500/35 to-transparent" aria-hidden="true"></div>
+        </div>
+        <div class="pt-2 pb-4">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3 class="heading text-lg text-white">New lead comes in: agent texts them immediately</h3>
+          </div>
+          <p class="text-slate-400 text-base leading-relaxed pl-12" style="font-weight:300;">
+            The moment a lead submits a form, calls, or comes in from Zillow or Realtor.com, your AI agent fires off a personalized SMS within 15 seconds. Every other agent is asleep or with a client. You're already in the lead's phone.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="relative flex gap-6 pb-12 reveal d1">
+        <div class="flex flex-col items-center flex-shrink-0">
+          <div class="w-12 h-12 rounded-full bg-blue-500/12 border border-blue-500/35 flex items-center justify-center z-10 relative" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          </div>
+          <div class="w-px flex-1 mt-3 bg-gradient-to-b from-blue-500/35 to-transparent" aria-hidden="true"></div>
+        </div>
+        <div class="pt-2 pb-4">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            </div>
+            <h3 class="heading text-lg text-white">Agent asks 3 qualifying questions via SMS</h3>
+          </div>
+          <p class="text-slate-400 text-base leading-relaxed pl-12" style="font-weight:300;">
+            Budget range. Timeline to buy or sell. Pre-approval status. The agent holds a natural back-and-forth SMS conversation (not a robotic form) and gathers exactly what you need to know before the meeting.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="relative flex gap-6 reveal d2">
+        <div class="flex flex-col items-center flex-shrink-0">
+          <div class="w-12 h-12 rounded-full bg-green-500/12 border border-green-500/35 flex items-center justify-center z-10 relative" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+        <div class="pt-2">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <h3 class="heading text-lg text-white">Qualified lead gets booked into your calendar</h3>
+          </div>
+          <p class="text-slate-400 text-base leading-relaxed pl-12" style="font-weight:300;">
+            Once qualified, the agent offers your real availability and books the appointment directly into your calendar. You get a notification with the full conversation log. You show up to a warm, prepared meeting.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     WHAT YOU GET
+════════════════════════════════════════════ -->
+<section class="py-24 px-4 bg-[#0A0E18]" aria-labelledby="features-heading">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Section header -->
+    <div class="text-center mb-14 reveal">
+      <div class="tag bg-blue-500/10 border border-blue-500/25 text-blue-400 mb-4 inline-flex">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Everything Included
+      </div>
+      <h2 id="features-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-white mb-4">
+        One agent. Every gap covered.
+      </h2>
+      <p class="text-slate-400 text-base max-w-xl mx-auto leading-relaxed" style="font-weight:300;">
+        You don&rsquo;t manage it. You don&rsquo;t configure it. You close more deals.
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <article class="feat-card reveal">
+        <div class="mb-4" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3 class="heading text-base text-white mb-2">24/7 SMS Follow-Up</h3>
+        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">Responds to every lead within 15 seconds, including midnight, Sundays, and holidays. Leads you used to lose while sleeping get answered before your competitors wake up.</p>
+      </article>
+
+      <article class="feat-card reveal d1">
+        <div class="mb-4" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="heading text-base text-white mb-2">Lead Qualification</h3>
+        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">Identifies serious buyers by asking about budget, financing, and timeline upfront. You walk into every call knowing the lead is worth your time.</p>
+      </article>
+
+      <article class="feat-card reveal d2">
+        <div class="mb-4" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+        </div>
+        <h3 class="heading text-base text-white mb-2">Automatic Booking</h3>
+        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">Connects to your calendar and books the appointment without you. You get a confirmation with the full context.</p>
+      </article>
+
+      <article class="feat-card reveal d1">
+        <div class="mb-4" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="13" y2="14"/></svg>
+        </div>
+        <h3 class="heading text-base text-white mb-2">Full Conversation Log</h3>
+        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">Every SMS conversation saved and summarized. Walk into every meeting knowing the lead&rsquo;s budget, timeline, and concerns.</p>
+      </article>
+
+      <article class="feat-card reveal d2">
+        <div class="mb-4" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h4m-4 4h10"/></svg>
+        </div>
+        <h3 class="heading text-base text-white mb-2">Works With Your CRM</h3>
+        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">No ripping out your existing stack. Connects to Follow Up Boss, LionDesk, kvCORE, Salesforce, and more via webhook.</p>
+      </article>
+
+      <article class="feat-card reveal d3">
+        <div class="mb-4" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="heading text-base text-white mb-2">White-Glove Setup</h3>
+        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">We handle the entire setup in 48 hours. You don&rsquo;t touch a single setting. You just start getting booked appointments.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     PRICING
+════════════════════════════════════════════ -->
+<section id="pricing" class="py-24 px-4" aria-labelledby="pricing-heading">
+  <div class="max-w-2xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-12 reveal">
+      <div class="tag bg-green-500/10 border border-green-500/25 text-green-400 mb-4 inline-flex">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Simple Pricing
+      </div>
+      <h2 id="pricing-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-white mb-4">
+        One plan. One price. No surprises.
+      </h2>
+      <p class="text-slate-400 text-base max-w-md mx-auto leading-relaxed" style="font-weight:300;">
+        One closed deal pays for the agent for the entire year. Most agents book 3–5 extra appointments per month.
+      </p>
+    </div>
+
+    <!-- Pricing card -->
+    <div class="pricing-card p-8 reveal d1">
+      <!-- Plan header -->
+      <div class="flex items-start justify-between mb-8 flex-wrap gap-4">
+        <div>
+          <h3 class="heading text-xl text-white mb-1">Lead-to-Appointment Agent</h3>
+          <p class="text-slate-400 text-base" style="font-weight:300;">Full-service, done for you</p>
+        </div>
+        <div class="text-right">
+          <p class="display text-[2.8rem] text-white leading-none">$500</p>
+          <p class="text-slate-400 text-sm mt-1">/month</p>
+        </div>
+      </div>
+
+      <!-- Features list -->
+      <ul class="flex flex-col gap-3.5 mb-8" aria-label="Plan features">
+        <li class="flex items-center gap-3 text-base text-slate-300">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          24/7 SMS lead response in &lt;15 seconds
+        </li>
+        <li class="flex items-center gap-3 text-base text-slate-300">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          3-question qualification conversation
+        </li>
+        <li class="flex items-center gap-3 text-base text-slate-300">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Automatic calendar booking
+        </li>
+        <li class="flex items-center gap-3 text-base text-slate-300">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Full conversation transcripts per lead
+        </li>
+        <li class="flex items-center gap-3 text-base text-slate-300">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          CRM integration (Follow Up Boss, kvCORE, more)
+        </li>
+        <li class="flex items-center gap-3 text-base text-slate-300">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          White-glove setup in 48 hours
+        </li>
+        <li class="flex items-center gap-3 text-base text-slate-300">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Ongoing monitoring and optimization
+        </li>
+      </ul>
+
+      <!-- CTA -->
+      <a href="https://calendly.com/sarah-chaudev/30min" class="btn-primary w-full justify-center text-base py-4">
+        Start Free 30-Day Pilot
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <!-- Pilot callout -->
+      <div class="mt-6 pt-6 border-t border-white/[0.08]">
+        <div class="flex items-start gap-3">
+          <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div>
+            <p class="text-sm font-semibold text-green-400 mb-1">30-Day Free Pilot</p>
+            <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">
+              The agent runs on your real leads for 30 days at no charge. If it doesn't book appointments you're satisfied with, cancel and pay nothing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════ -->
+<section id="faq" class="py-24 px-4 bg-[#0A0E18]" aria-labelledby="faq-heading">
+  <div class="max-w-2xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-12 reveal">
+      <div class="tag bg-blue-500/10 border border-blue-500/25 text-blue-400 mb-4 inline-flex">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Common Questions
+      </div>
+      <h2 id="faq-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-white">
+        Questions we get every week
+      </h2>
+    </div>
+
+    <!-- FAQ items -->
+    <div class="flex flex-col gap-0 divide-y divide-white/[0.06]" role="list">
+
+      <div class="py-5 reveal" role="listitem">
+        <button
+          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+          aria-expanded="false"
+          onclick="toggleFaq(this)"
+        >
+          <span class="heading text-base text-white">What leads does this work with?</span>
+          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-body" role="region">
+          <p class="text-slate-400 text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
+            Any lead with a phone number: Zillow, Realtor.com, your own website, open house sign-ins, Facebook leads, Google ads, referrals. If they have a mobile number, the agent can follow up. We configure the sources during setup.
+          </p>
+        </div>
+      </div>
+
+      <div class="py-5 reveal d1" role="listitem">
+        <button
+          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+          aria-expanded="false"
+          onclick="toggleFaq(this)"
+        >
+          <span class="heading text-base text-white">Do I need to change my current setup?</span>
+          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-body" role="region">
+          <p class="text-slate-400 text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
+            No. The agent slots in alongside whatever you're already using. Keep your CRM, your calendar, your lead sources. We connect to all of it. Setup takes 48 hours and we handle everything.
+          </p>
+        </div>
+      </div>
+
+      <div class="py-5 reveal d2" role="listitem">
+        <button
+          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+          aria-expanded="false"
+          onclick="toggleFaq(this)"
+        >
+          <span class="heading text-base text-white">What happens during the free pilot?</span>
+          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-body" role="region">
+          <p class="text-slate-400 text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
+            We set up the full agent on your real leads. No sandbox, no fake demos. You watch it run for 30 days. If it books appointments you're satisfied with, you continue at $500/month. If not, you cancel and owe nothing.
+          </p>
+        </div>
+      </div>
+
+      <div class="py-5 reveal d3" role="listitem">
+        <button
+          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+          aria-expanded="false"
+          onclick="toggleFaq(this)"
+        >
+          <span class="heading text-base text-white">How long does setup take?</span>
+          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-body" role="region">
+          <p class="text-slate-400 text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
+            48 hours from the day you say go. We collect your lead sources, CRM login, and calendar access, then build and test the agent. You don't do any technical work. Most agents are live the next business day.
+          </p>
+        </div>
+      </div>
+
+      <div class="py-5 reveal d4" role="listitem">
+        <button
+          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+          aria-expanded="false"
+          onclick="toggleFaq(this)"
+        >
+          <span class="heading text-base text-white">What if a lead asks something complex?</span>
+          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-body" role="region">
+          <p class="text-slate-400 text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
+            The agent is trained to stay in its lane. For questions outside the qualification flow, it says something like: "Great question. I'll make sure [your name] covers that when you meet." This keeps the conversation moving toward the appointment rather than derailing it.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FINAL CTA BANNER
+════════════════════════════════════════════ -->
+<section class="py-24 px-4 relative overflow-hidden" aria-labelledby="cta-heading">
+  <div class="absolute inset-0 dot-grid opacity-30" aria-hidden="true"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-500/6 blur-3xl rounded-full pointer-events-none" aria-hidden="true"></div>
+  <div class="relative max-w-2xl mx-auto text-center reveal">
+    <h2 id="cta-heading" class="display text-[clamp(1.8rem,4vw,3rem)] text-white mb-5">
+      Every hour you wait is another lead booking with a competitor.
+    </h2>
+    <p class="text-slate-400 text-base leading-relaxed mb-8 max-w-lg mx-auto" style="font-weight:300;">
+      Start the free 30-day pilot today. We handle the entire setup and you start receiving appointment notifications from leads that would otherwise have gone cold.
+    </p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="https://calendly.com/sarah-chaudev/30min" class="btn-primary text-base py-4 px-8">
+        Start Free 30-Day Pilot
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <p class="mt-4 text-sm text-slate-600">No credit card required &nbsp;·&nbsp; Live in 48 hours &nbsp;·&nbsp; Cancel anytime</p>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="border-t border-white/[0.06] py-10 px-4" role="contentinfo">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded" aria-label="ChauDev home">
+      <div class="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/25 flex items-center justify-center" aria-hidden="true">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <span class="heading text-sm tracking-widest">CHAU<span class="text-blue-400">DEV</span></span>
+    </a>
+
+    <!-- Links -->
+    <nav class="flex flex-wrap items-center gap-6" aria-label="Footer navigation">
+      <a href="#how-it-works" class="link-nav text-xs">How It Works</a>
+      <a href="#pricing" class="link-nav text-xs">Pricing</a>
+      <a href="#faq" class="link-nav text-xs">FAQ</a>
+      <a href="mailto:hello@chaudev.com" class="link-nav text-xs flex items-center gap-1.5">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        hello@chaudev.com
+      </a>
+    </nav>
+
+    <!-- Copyright -->
+    <p class="text-xs text-slate-600">
+      &copy; 2025 ChauDev. All rights reserved.
+    </p>
+
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════ -->
+<script>
+/* ── Mobile menu ── */
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const iconOpen = document.getElementById('menu-icon-open');
+const iconClose = document.getElementById('menu-icon-close');
+
+menuToggle.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', isOpen);
+  iconOpen.classList.toggle('hidden', isOpen);
+  iconClose.classList.toggle('hidden', !isOpen);
+});
+
+// Close mobile menu when a link is clicked
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+  });
+});
+
+/* ── Scroll reveal ── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ── Counter animation ── */
+function animateCounter(el, target, duration = 1800) {
+  const start = performance.now();
+  const update = (now) => {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(eased * target);
+    if (progress < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+
+const counterEls = document.querySelectorAll('.counter');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const target = parseInt(e.target.dataset.target, 10);
+      animateCounter(e.target, target);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+counterEls.forEach(el => counterObserver.observe(el));
+
+/* ── FAQ accordion ── */
+function toggleFaq(btn) {
+  const body = btn.nextElementSibling;
+  const icon = btn.querySelector('.faq-icon');
+  const isOpen = body.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.faq-body.open').forEach(b => {
+    b.classList.remove('open');
+    b.previousElementSibling.setAttribute('aria-expanded', 'false');
+    b.previousElementSibling.querySelector('.faq-icon').classList.remove('open');
+  });
+
+  if (!isOpen) {
+    body.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    icon.classList.add('open');
+  }
+}
+
+/* ── SMS Chat animation ── */
+const chatMessages = document.getElementById('chat-messages');
+const chatAlert = document.getElementById('chat-alert');
+
+const messages = [
+  { type: 'agent', text: 'Hi Marcus! This is ChauDev with Sunrise Realty. I saw you\'re interested in 3-bed homes in the area. Are you currently pre-approved for a mortgage?', delay: 800 },
+  { type: 'lead', text: 'Yes, pre-approved up to $650K', delay: 3200 },
+  { type: 'agent', text: 'Perfect. Are you looking to move within 60 days, or is your timeline closer to 3-6 months out?', delay: 5000 },
+  { type: 'lead', text: 'Ideally within 60 days', delay: 7200 },
+  { type: 'agent', text: 'Got it. Do you have a home to sell first, or are you free to move quickly when you find the right one?', delay: 9000 },
+  { type: 'lead', text: 'No home to sell, ready to move', delay: 11200 },
+  { type: 'booked', text: 'Appointment confirmed: Tuesday at 2:00 PM', delay: 13000 },
+];
+
+function showAlert() {
+  setTimeout(() => { chatAlert.classList.add('shown'); }, 300);
+}
+
+function renderMessage(msg, index) {
+  setTimeout(() => {
+    // Remove typing indicator if exists
+    const typing = chatMessages.querySelector('.typing-wrap');
+    if (typing) typing.remove();
+
+    if (msg.type === 'booked') {
+      const el = document.createElement('div');
+      el.className = 'chat-bubble-hidden flex items-center gap-2 self-center bg-green-500/12 border border-green-500/25 rounded-full px-4 py-2 text-xs font-semibold text-green-400';
+      el.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>${msg.text}`;
+      chatMessages.appendChild(el);
+      setTimeout(() => el.classList.add('shown'), 30);
+      return;
+    }
+
+    const wrap = document.createElement('div');
+    wrap.className = `flex ${msg.type === 'lead' ? 'justify-end' : 'justify-start'}`;
+    const bubble = document.createElement('div');
+    bubble.className = `chat-bubble-hidden ${msg.type === 'agent' ? 'bubble-agent' : 'bubble-lead'}`;
+    bubble.textContent = msg.text;
+    wrap.appendChild(bubble);
+    chatMessages.appendChild(wrap);
+    setTimeout(() => bubble.classList.add('shown'), 30);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // Add typing indicator if more messages follow
+    const nextMsg = messages[index + 1];
+    if (nextMsg && nextMsg.type === 'agent') {
+      const typingDelay = nextMsg.delay - msg.delay - 600;
+      if (typingDelay > 400) {
+        setTimeout(() => {
+          if (!chatMessages.querySelector('.typing-wrap')) {
+            const tw = document.createElement('div');
+            tw.className = 'typing-wrap';
+            tw.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            chatMessages.appendChild(tw);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+          }
+        }, 400);
+      }
+    }
+  }, msg.delay);
+}
+
+showAlert();
+messages.forEach((msg, i) => renderMessage(msg, i));
+
+// Restart animation loop
+function restartChat() {
+  setTimeout(() => {
+    chatMessages.innerHTML = '';
+    chatAlert.classList.remove('shown');
+    showAlert();
+    messages.forEach((msg, i) => renderMessage(msg, i));
+    restartChat();
+  }, 19000);
+}
+restartChat();
+</script>
+
+</body>
+</html>
