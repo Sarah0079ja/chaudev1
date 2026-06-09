@@ -11,22 +11,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Josefin+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg:        #07090F;
-      --bg-card:   #0C1120;
-      --bg-raise:  #101827;
-      --border:    rgba(255,255,255,0.07);
-      --blue:      #3B82F6;
-      --blue-dim:  rgba(59,130,246,0.12);
-      --green:     #10B981;
-      --green-dim: rgba(16,185,129,0.12);
-      --text:      #EFF6FF;
-      --muted:     #94A3B8;
-      --dim:       #475569;
+      --bg:        #FAF7F2;
+      --bg-card:   #FFFFFF;
+      --bg-raise:  #F5F0EA;
+      --border:    rgba(45,45,45,0.10);
+      --coral:     #E8614A;
+      --coral-dim: rgba(232,97,74,0.12);
+      --peach:     #F5C4B3;
+      --peach-dim: rgba(245,196,179,0.25);
+      --text:      #2D2D2D;
+      --muted:     #6B7280;
+      --dim:       #9CA3AF;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
 
-    html { color-scheme: dark; }
+    html { color-scheme: light; }
 
     body {
       font-family: 'Josefin Sans', sans-serif;
@@ -51,7 +51,7 @@
 
     /* ── Backgrounds ── */
     .dot-grid {
-      background-image: radial-gradient(circle, rgba(59,130,246,0.18) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(232,97,74,0.15) 1px, transparent 1px);
       background-size: 30px 30px;
     }
     .noise {
@@ -60,10 +60,10 @@
 
     /* ── Nav ── */
     .nav-glass {
-      background: rgba(7,9,15,0.85);
+      background: rgba(250,247,242,0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(45,45,45,0.10);
     }
 
     /* ── Buttons ── */
@@ -71,7 +71,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #047857;
+      background: #E8614A;
       color: #fff;
       font-family: 'Josefin Sans', sans-serif;
       font-weight: 600;
@@ -86,11 +86,11 @@
       transition: background 0.2s, transform 0.15s;
     }
     .btn-primary:hover {
-      background: #065F46;
+      background: #D4553F;
       transform: translateY(-1px);
     }
     .btn-primary:focus-visible {
-      outline: 2px solid var(--green);
+      outline: 2px solid var(--coral);
       outline-offset: 3px;
     }
     .btn-primary:active { transform: translateY(0); }
@@ -109,23 +109,23 @@
       padding: 12px 26px;
       border-radius: 8px;
       cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.18);
+      border: 1px solid rgba(45,45,45,0.20);
       text-decoration: none;
       transition: background 0.2s, border-color 0.2s;
     }
     .btn-ghost:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.35);
+      background: rgba(45,45,45,0.05);
+      border-color: rgba(45,45,45,0.40);
     }
     .btn-ghost:focus-visible {
-      outline: 2px solid var(--blue);
+      outline: 2px solid var(--coral);
       outline-offset: 3px;
     }
 
     .btn-nav {
       display: inline-flex;
       align-items: center;
-      background: #047857;
+      background: #E8614A;
       color: #fff;
       font-family: 'Josefin Sans', sans-serif;
       font-weight: 600;
@@ -140,22 +140,22 @@
       transition: background 0.2s, transform 0.15s;
       white-space: nowrap;
     }
-    .btn-nav:hover { background: #065F46; transform: translateY(-1px); }
-    .btn-nav:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+    .btn-nav:hover { background: #D4553F; transform: translateY(-1px); }
+    .btn-nav:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
 
     /* ── Feature Cards ── */
     .feat-card {
       background: var(--bg-card);
-      border: 1px solid var(--border);
+      border: 1px solid rgba(45,45,45,0.10);
       border-radius: 12px;
       padding: 28px 24px;
       cursor: default;
       transition: border-color 0.22s, transform 0.22s, box-shadow 0.22s;
     }
     .feat-card:hover {
-      border-color: rgba(59,130,246,0.35);
+      border-color: rgba(232,97,74,0.40);
       transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.35), 0 0 24px rgba(59,130,246,0.07);
+      box-shadow: 0 12px 40px rgba(45,45,45,0.10), 0 0 24px rgba(232,97,74,0.08);
     }
 
     /* ── Step cards ── */
@@ -165,7 +165,7 @@
       top: 52px;
       bottom: -28px;
       width: 1px;
-      background: linear-gradient(to bottom, rgba(59,130,246,0.4), transparent);
+      background: linear-gradient(to bottom, rgba(232,97,74,0.4), transparent);
     }
 
     /* ── Pricing ── */
@@ -181,7 +181,7 @@
       inset: 0;
       border-radius: 16px;
       padding: 1px;
-      background: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);
+      background: linear-gradient(135deg, #E8614A 0%, #F5C4B3 100%);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -209,30 +209,30 @@
 
     /* ── SMS Chat ── */
     .chat-phone {
-      background: #0C1120;
-      border: 1px solid rgba(59,130,246,0.2);
+      background: #FFFFFF;
+      border: 1px solid rgba(232,97,74,0.20);
       border-radius: 24px;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 24px rgba(59,130,246,0.06);
+      box-shadow: 0 24px 64px rgba(45,45,45,0.12), 0 0 24px rgba(232,97,74,0.06);
       padding: 4px;
     }
     .bubble-agent {
-      background: rgba(59,130,246,0.18);
-      border: 1px solid rgba(59,130,246,0.25);
+      background: rgba(232,97,74,0.10);
+      border: 1px solid rgba(232,97,74,0.22);
       border-radius: 14px 14px 14px 4px;
       padding: 10px 14px;
       font-size: 0.82rem;
       line-height: 1.5;
-      color: #DBEAFE;
+      color: #2D2D2D;
       max-width: 85%;
     }
     .bubble-lead {
-      background: rgba(16,185,129,0.15);
-      border: 1px solid rgba(16,185,129,0.22);
+      background: rgba(245,196,179,0.30);
+      border: 1px solid rgba(245,196,179,0.50);
       border-radius: 14px 14px 4px 14px;
       padding: 10px 14px;
       font-size: 0.82rem;
       line-height: 1.5;
-      color: #D1FAE5;
+      color: #2D2D2D;
       max-width: 75%;
       align-self: flex-end;
     }
@@ -241,14 +241,14 @@
       align-items: center;
       gap: 4px;
       padding: 10px 14px;
-      background: rgba(59,130,246,0.14);
-      border: 1px solid rgba(59,130,246,0.2);
+      background: rgba(232,97,74,0.08);
+      border: 1px solid rgba(232,97,74,0.18);
       border-radius: 14px 14px 14px 4px;
     }
     .typing-dot {
       width: 6px;
       height: 6px;
-      background: var(--blue);
+      background: var(--coral);
       border-radius: 50%;
       animation: tdot 1.4s ease-in-out infinite;
     }
@@ -273,13 +273,13 @@
     /* ── Pulse dot ── */
     .live-dot {
       width: 8px; height: 8px;
-      background: var(--green);
+      background: var(--coral);
       border-radius: 50%;
       animation: livepulse 2s ease-in-out infinite;
     }
     @keyframes livepulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
-      50%      { box-shadow: 0 0 0 5px rgba(16,185,129,0); }
+      0%,100% { box-shadow: 0 0 0 0 rgba(232,97,74,0.5); }
+      50%      { box-shadow: 0 0 0 5px rgba(232,97,74,0); }
     }
 
     /* ── Mobile nav ── */
@@ -296,8 +296,8 @@
     }
 
     /* ── Stat bar layout ── */
-    .stat-divider { border-left: 1px solid rgba(255,255,255,0.12); }
-    @media (max-width: 767px) { .stat-divider { border-left: none; border-top: 1px solid rgba(255,255,255,0.12); } }
+    .stat-divider { border-left: 1px solid rgba(255,255,255,0.15); }
+    @media (max-width: 767px) { .stat-divider { border-left: none; border-top: 1px solid rgba(255,255,255,0.15); } }
 
     /* ── Misc ── */
     .tag {
@@ -321,7 +321,7 @@
       transition: color 0.2s;
     }
     .link-nav:hover { color: var(--text); }
-    .link-nav:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+    .link-nav:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; border-radius: 2px; }
   </style>
 </head>
 <body>
@@ -332,13 +332,13 @@
 <header class="fixed top-4 left-4 right-4 z-50" role="banner">
   <nav class="nav-glass rounded-xl px-5 py-3.5 flex items-center justify-between max-w-6xl mx-auto" aria-label="Main navigation">
     <!-- Logo -->
-    <a href="#" class="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded" aria-label="ChauDev home">
-      <div class="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/30 flex items-center justify-center" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <a href="#" class="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8614A] rounded" aria-label="ChauDev home">
+      <div class="w-8 h-8 rounded-lg bg-[#E8614A]/10 border border-[#E8614A]/30 flex items-center justify-center" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
         </svg>
       </div>
-      <span class="heading text-sm tracking-widest">CHAU<span class="text-blue-400">DEV</span></span>
+      <span class="heading text-sm tracking-widest text-[#2D2D2D]">CHAU<span class="text-[#E8614A]">DEV</span></span>
     </a>
 
     <!-- Desktop links -->
@@ -353,7 +353,7 @@
       <a href="https://calendly.com/sarah-chaudev/30min" class="btn-nav">Book a Demo</a>
       <button
         id="menu-toggle"
-        class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg border border-white/10 hover:border-white/25 transition-colors cursor-pointer"
+        class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg border border-[#2D2D2D]/10 hover:border-[#2D2D2D]/25 transition-colors cursor-pointer"
         aria-label="Open navigation menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -385,30 +385,30 @@
   <!-- Background layers -->
   <div class="absolute inset-0 dot-grid opacity-40" aria-hidden="true"></div>
   <div class="absolute inset-0 noise" aria-hidden="true"></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#07090F]" aria-hidden="true"></div>
-  <!-- Blue radial glow -->
-  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-blue-500/5 blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FAF7F2]" aria-hidden="true"></div>
+  <!-- Coral radial glow -->
+  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#E8614A]/5 blur-3xl pointer-events-none" aria-hidden="true"></div>
 
   <div class="relative max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
     <!-- Left: Copy -->
     <div>
       <!-- Tag -->
-      <div class="tag bg-blue-500/10 border border-blue-500/25 text-blue-400 mb-6 reveal">
+      <div class="tag bg-[#E8614A]/10 border border-[#E8614A]/25 text-[#E8614A] mb-6 reveal">
         <div class="live-dot" aria-hidden="true"></div>
         Running 24/7 · Done For You
       </div>
 
       <!-- Headline -->
-      <h1 id="hero-headline" class="display text-[clamp(2rem,5vw,3.4rem)] text-white mb-6 reveal d1">
+      <h1 id="hero-headline" class="display text-[clamp(2rem,5vw,3.4rem)] text-[#2D2D2D] mb-6 reveal d1">
         Your leads go cold<br>
-        in <span class="text-blue-400">15 minutes.</span><br>
+        in <span class="text-[#E8614A]">15 minutes.</span><br>
         Your AI agent responds<br>
-        in <span class="text-green-400">15 seconds.</span>
+        in <span class="text-[#E8614A]">15 seconds.</span>
       </h1>
 
       <!-- Subheadline -->
-      <p class="text-[clamp(1rem,1.8vw,1.15rem)] text-slate-300 leading-relaxed max-w-lg mb-8 reveal d2" style="font-weight:300;">
+      <p class="text-[clamp(1rem,1.8vw,1.15rem)] text-[#6B7280] leading-relaxed max-w-lg mb-8 reveal d2" style="font-weight:300;">
         Done-for-you AI that texts new leads instantly, qualifies them with 3 questions, and books the appointment. All while you're with other clients.
       </p>
 
@@ -425,34 +425,34 @@
       </div>
 
       <!-- Trust micro-copy -->
-      <p class="mt-6 text-xs text-slate-500 reveal d4">No setup fee &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Live in 48 hours</p>
+      <p class="mt-6 text-xs text-[#9CA3AF] reveal d4">No setup fee &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Live in 48 hours</p>
     </div>
 
     <!-- Right: SMS chat mockup -->
     <div class="flex justify-center lg:justify-end reveal d2">
       <div class="chat-phone w-full max-w-[340px] overflow-hidden" role="img" aria-label="Animated SMS conversation showing AI agent responding to a new lead">
         <!-- Phone top bar -->
-        <div class="px-5 py-3 flex items-center justify-between border-b border-white/[0.07]">
+        <div class="px-5 py-3 flex items-center justify-between border-b border-[#2D2D2D]/[0.07]">
           <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <div class="w-9 h-9 rounded-full bg-[#E8614A]/15 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
             <div>
-              <p class="text-xs font-semibold text-white">ChauDev</p>
+              <p class="text-xs font-semibold text-[#2D2D2D]">ChauDev</p>
               <div class="flex items-center gap-1.5">
                 <div class="live-dot w-1.5 h-1.5" aria-hidden="true"></div>
-                <p class="text-xs text-green-400 font-medium">Active now</p>
+                <p class="text-xs text-[#E8614A] font-medium">Active now</p>
               </div>
             </div>
           </div>
-          <div class="text-xs text-slate-500 font-medium">SMS</div>
+          <div class="text-xs text-[#9CA3AF] font-medium">SMS</div>
         </div>
 
         <!-- New lead alert -->
-        <div class="px-4 py-2.5 border-b border-white/[0.07]">
+        <div class="px-4 py-2.5 border-b border-[#2D2D2D]/[0.07]">
           <div id="chat-alert" class="chat-bubble-hidden flex items-center gap-2" aria-live="polite">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#F59E0B" stroke="none" aria-hidden="true"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-            <span class="text-xs text-amber-400 font-semibold">New lead: Marcus T. · 3BR home inquiry</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#E8614A" stroke="none" aria-hidden="true"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            <span class="text-xs text-[#E8614A] font-semibold">New lead: Marcus T. · 3BR home inquiry</span>
           </div>
         </div>
 
@@ -470,32 +470,32 @@
 <!-- ════════════════════════════════════════════
      PAIN / STATS BAR
 ════════════════════════════════════════════ -->
-<section class="bg-black py-14 px-4 border-y border-white/[0.06]" aria-labelledby="stats-heading">
+<section class="bg-[#2D2D2D] py-14 px-4 border-y border-white/[0.06]" aria-labelledby="stats-heading">
   <h2 id="stats-heading" class="sr-only">Industry statistics</h2>
   <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-white/10">
 
     <div class="px-6 py-8 md:py-4 text-center reveal">
-      <p class="display text-[clamp(2.8rem,6vw,4.5rem)] text-white mb-2">
+      <p class="display text-[clamp(2.8rem,6vw,4.5rem)] text-[#E8614A] mb-2">
         <span class="counter" data-target="78">0</span>%
       </p>
-      <p class="text-xs font-semibold text-slate-300 uppercase tracking-widest mb-1">of buyers hire</p>
-      <p class="text-xs text-slate-500">the first agent to respond</p>
+      <p class="text-xs font-semibold text-white/80 uppercase tracking-widest mb-1">of buyers hire</p>
+      <p class="text-xs text-white/50">the first agent to respond</p>
     </div>
 
     <div class="px-6 py-8 md:py-4 text-center reveal d1">
-      <p class="display text-[clamp(2.8rem,6vw,4.5rem)] text-red-400 mb-2">
+      <p class="display text-[clamp(2.8rem,6vw,4.5rem)] text-[#E8614A] mb-2">
         <span class="counter" data-target="15">0</span>hrs
       </p>
-      <p class="text-xs font-semibold text-slate-300 uppercase tracking-widest mb-1">average agent response</p>
-      <p class="text-xs text-slate-500">The lead is gone in 15 minutes</p>
+      <p class="text-xs font-semibold text-white/80 uppercase tracking-widest mb-1">average agent response</p>
+      <p class="text-xs text-white/50">The lead is gone in 15 minutes</p>
     </div>
 
     <div class="px-6 py-8 md:py-4 text-center reveal d2">
-      <p class="display text-[clamp(2.8rem,6vw,4.5rem)] text-green-400 mb-2">
+      <p class="display text-[clamp(2.8rem,6vw,4.5rem)] text-[#E8614A] mb-2">
         15s
       </p>
-      <p class="text-xs font-semibold text-slate-300 uppercase tracking-widest mb-1">your AI responds</p>
-      <p class="text-xs text-slate-500">Every lead. Every time. 24/7.</p>
+      <p class="text-xs font-semibold text-white/80 uppercase tracking-widest mb-1">your AI responds</p>
+      <p class="text-xs text-white/50">Every lead. Every time. 24/7.</p>
     </div>
 
   </div>
@@ -510,14 +510,14 @@
 
     <!-- Section header -->
     <div class="text-center mb-16 reveal">
-      <div class="tag bg-blue-500/10 border border-blue-500/25 text-blue-400 mb-4 inline-flex">
+      <div class="tag bg-[#E8614A]/10 border border-[#E8614A]/25 text-[#E8614A] mb-4 inline-flex">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
         The Process
       </div>
-      <h2 id="hiw-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-white mb-4">
+      <h2 id="hiw-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-[#2D2D2D] mb-4">
         Three steps. Zero effort from you.
       </h2>
-      <p class="text-slate-400 text-base leading-relaxed max-w-xl mx-auto" style="font-weight:300;">
+      <p class="text-[#6B7280] text-base leading-relaxed max-w-xl mx-auto" style="font-weight:300;">
         From new lead to booked appointment without you lifting a finger.
       </p>
     </div>
@@ -528,19 +528,19 @@
       <!-- Step 1 -->
       <div class="relative flex gap-6 pb-12 reveal">
         <div class="flex flex-col items-center flex-shrink-0">
-          <div class="w-12 h-12 rounded-full bg-blue-500/12 border border-blue-500/35 flex items-center justify-center z-10 relative" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <div class="w-12 h-12 rounded-full bg-[#E8614A]/10 border border-[#E8614A]/35 flex items-center justify-center z-10 relative" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           </div>
-          <div class="w-px flex-1 mt-3 bg-gradient-to-b from-blue-500/35 to-transparent" aria-hidden="true"></div>
+          <div class="w-px flex-1 mt-3 bg-gradient-to-b from-[#E8614A]/35 to-transparent" aria-hidden="true"></div>
         </div>
         <div class="pt-2 pb-4">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <div class="w-9 h-9 rounded-lg bg-[#E8614A]/10 border border-[#E8614A]/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             </div>
-            <h3 class="heading text-lg text-white">New lead comes in: agent texts them immediately</h3>
+            <h3 class="heading text-lg text-[#2D2D2D]">New lead comes in: agent texts them immediately</h3>
           </div>
-          <p class="text-slate-400 text-base leading-relaxed pl-12" style="font-weight:300;">
+          <p class="text-[#6B7280] text-base leading-relaxed pl-12" style="font-weight:300;">
             The moment a lead submits a form, calls, or comes in from Zillow or Realtor.com, your AI agent fires off a personalized SMS within 15 seconds. Every other agent is asleep or with a client. You're already in the lead's phone.
           </p>
         </div>
@@ -549,19 +549,19 @@
       <!-- Step 2 -->
       <div class="relative flex gap-6 pb-12 reveal d1">
         <div class="flex flex-col items-center flex-shrink-0">
-          <div class="w-12 h-12 rounded-full bg-blue-500/12 border border-blue-500/35 flex items-center justify-center z-10 relative" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          <div class="w-12 h-12 rounded-full bg-[#E8614A]/10 border border-[#E8614A]/35 flex items-center justify-center z-10 relative" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
           </div>
-          <div class="w-px flex-1 mt-3 bg-gradient-to-b from-blue-500/35 to-transparent" aria-hidden="true"></div>
+          <div class="w-px flex-1 mt-3 bg-gradient-to-b from-[#E8614A]/35 to-transparent" aria-hidden="true"></div>
         </div>
         <div class="pt-2 pb-4">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            <div class="w-9 h-9 rounded-lg bg-[#E8614A]/10 border border-[#E8614A]/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
             </div>
-            <h3 class="heading text-lg text-white">Agent asks 3 qualifying questions via SMS</h3>
+            <h3 class="heading text-lg text-[#2D2D2D]">Agent asks 3 qualifying questions via SMS</h3>
           </div>
-          <p class="text-slate-400 text-base leading-relaxed pl-12" style="font-weight:300;">
+          <p class="text-[#6B7280] text-base leading-relaxed pl-12" style="font-weight:300;">
             Budget range. Timeline to buy or sell. Pre-approval status. The agent holds a natural back-and-forth SMS conversation (not a robotic form) and gathers exactly what you need to know before the meeting.
           </p>
         </div>
@@ -570,18 +570,18 @@
       <!-- Step 3 -->
       <div class="relative flex gap-6 reveal d2">
         <div class="flex flex-col items-center flex-shrink-0">
-          <div class="w-12 h-12 rounded-full bg-green-500/12 border border-green-500/35 flex items-center justify-center z-10 relative" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          <div class="w-12 h-12 rounded-full bg-[#E8614A]/10 border border-[#E8614A]/35 flex items-center justify-center z-10 relative" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
         </div>
         <div class="pt-2">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-9 h-9 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <div class="w-9 h-9 rounded-lg bg-[#E8614A]/10 border border-[#E8614A]/20 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </div>
-            <h3 class="heading text-lg text-white">Qualified lead gets booked into your calendar</h3>
+            <h3 class="heading text-lg text-[#2D2D2D]">Qualified lead gets booked into your calendar</h3>
           </div>
-          <p class="text-slate-400 text-base leading-relaxed pl-12" style="font-weight:300;">
+          <p class="text-[#6B7280] text-base leading-relaxed pl-12" style="font-weight:300;">
             Once qualified, the agent offers your real availability and books the appointment directly into your calendar. You get a notification with the full conversation log. You show up to a warm, prepared meeting.
           </p>
         </div>
@@ -595,19 +595,19 @@
 <!-- ════════════════════════════════════════════
      WHAT YOU GET
 ════════════════════════════════════════════ -->
-<section class="py-24 px-4 bg-[#0A0E18]" aria-labelledby="features-heading">
+<section class="py-24 px-4 bg-white" aria-labelledby="features-heading">
   <div class="max-w-6xl mx-auto">
 
     <!-- Section header -->
     <div class="text-center mb-14 reveal">
-      <div class="tag bg-blue-500/10 border border-blue-500/25 text-blue-400 mb-4 inline-flex">
+      <div class="tag bg-[#E8614A]/10 border border-[#E8614A]/25 text-[#E8614A] mb-4 inline-flex">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         Everything Included
       </div>
-      <h2 id="features-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-white mb-4">
+      <h2 id="features-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-[#2D2D2D] mb-4">
         One agent. Every gap covered.
       </h2>
-      <p class="text-slate-400 text-base max-w-xl mx-auto leading-relaxed" style="font-weight:300;">
+      <p class="text-[#6B7280] text-base max-w-xl mx-auto leading-relaxed" style="font-weight:300;">
         You don&rsquo;t manage it. You don&rsquo;t configure it. You close more deals.
       </p>
     </div>
@@ -617,50 +617,50 @@
 
       <article class="feat-card reveal">
         <div class="mb-4" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
-        <h3 class="heading text-base text-white mb-2">24/7 SMS Follow-Up</h3>
-        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">Responds to every lead within 15 seconds, including midnight, Sundays, and holidays. Leads you used to lose while sleeping get answered before your competitors wake up.</p>
+        <h3 class="heading text-base text-[#2D2D2D] mb-2">24/7 SMS Follow-Up</h3>
+        <p class="text-base text-[#6B7280] leading-relaxed" style="font-weight:300;">Responds to every lead within 15 seconds, including midnight, Sundays, and holidays. Leads you used to lose while sleeping get answered before your competitors wake up.</p>
       </article>
 
       <article class="feat-card reveal d1">
         <div class="mb-4" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3 class="heading text-base text-white mb-2">Lead Qualification</h3>
-        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">Identifies serious buyers by asking about budget, financing, and timeline upfront. You walk into every call knowing the lead is worth your time.</p>
+        <h3 class="heading text-base text-[#2D2D2D] mb-2">Lead Qualification</h3>
+        <p class="text-base text-[#6B7280] leading-relaxed" style="font-weight:300;">Identifies serious buyers by asking about budget, financing, and timeline upfront. You walk into every call knowing the lead is worth your time.</p>
       </article>
 
       <article class="feat-card reveal d2">
         <div class="mb-4" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
         </div>
-        <h3 class="heading text-base text-white mb-2">Automatic Booking</h3>
-        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">Connects to your calendar and books the appointment without you. You get a confirmation with the full context.</p>
+        <h3 class="heading text-base text-[#2D2D2D] mb-2">Automatic Booking</h3>
+        <p class="text-base text-[#6B7280] leading-relaxed" style="font-weight:300;">Connects to your calendar and books the appointment without you. You get a confirmation with the full context.</p>
       </article>
 
       <article class="feat-card reveal d1">
         <div class="mb-4" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="13" y2="14"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="13" y2="14"/></svg>
         </div>
-        <h3 class="heading text-base text-white mb-2">Full Conversation Log</h3>
-        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">Every SMS conversation saved and summarized. Walk into every meeting knowing the lead&rsquo;s budget, timeline, and concerns.</p>
+        <h3 class="heading text-base text-[#2D2D2D] mb-2">Full Conversation Log</h3>
+        <p class="text-base text-[#6B7280] leading-relaxed" style="font-weight:300;">Every SMS conversation saved and summarized. Walk into every meeting knowing the lead&rsquo;s budget, timeline, and concerns.</p>
       </article>
 
       <article class="feat-card reveal d2">
         <div class="mb-4" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h4m-4 4h10"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h4m-4 4h10"/></svg>
         </div>
-        <h3 class="heading text-base text-white mb-2">Works With Your CRM</h3>
-        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">No ripping out your existing stack. Connects to Follow Up Boss, LionDesk, kvCORE, Salesforce, and more via webhook.</p>
+        <h3 class="heading text-base text-[#2D2D2D] mb-2">Works With Your CRM</h3>
+        <p class="text-base text-[#6B7280] leading-relaxed" style="font-weight:300;">No ripping out your existing stack. Connects to Follow Up Boss, LionDesk, kvCORE, Salesforce, and more via webhook.</p>
       </article>
 
       <article class="feat-card reveal d3">
         <div class="mb-4" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3 class="heading text-base text-white mb-2">White-Glove Setup</h3>
-        <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">We handle the entire setup in 48 hours. You don&rsquo;t touch a single setting. You just start getting booked appointments.</p>
+        <h3 class="heading text-base text-[#2D2D2D] mb-2">White-Glove Setup</h3>
+        <p class="text-base text-[#6B7280] leading-relaxed" style="font-weight:300;">We handle the entire setup in 48 hours. You don&rsquo;t touch a single setting. You just start getting booked appointments.</p>
       </article>
 
     </div>
@@ -676,14 +676,14 @@
 
     <!-- Header -->
     <div class="text-center mb-12 reveal">
-      <div class="tag bg-green-500/10 border border-green-500/25 text-green-400 mb-4 inline-flex">
+      <div class="tag bg-[#E8614A]/10 border border-[#E8614A]/25 text-[#E8614A] mb-4 inline-flex">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         Simple Pricing
       </div>
-      <h2 id="pricing-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-white mb-4">
+      <h2 id="pricing-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-[#2D2D2D] mb-4">
         One plan. One price. No surprises.
       </h2>
-      <p class="text-slate-400 text-base max-w-md mx-auto leading-relaxed" style="font-weight:300;">
+      <p class="text-[#6B7280] text-base max-w-md mx-auto leading-relaxed" style="font-weight:300;">
         One closed deal pays for the agent for the entire year. Most agents book 3–5 extra appointments per month.
       </p>
     </div>
@@ -693,43 +693,43 @@
       <!-- Plan header -->
       <div class="flex items-start justify-between mb-8 flex-wrap gap-4">
         <div>
-          <h3 class="heading text-xl text-white mb-1">Lead-to-Appointment Agent</h3>
-          <p class="text-slate-400 text-base" style="font-weight:300;">Full-service, done for you</p>
+          <h3 class="heading text-xl text-[#2D2D2D] mb-1">Lead-to-Appointment Agent</h3>
+          <p class="text-[#6B7280] text-base" style="font-weight:300;">Full-service, done for you</p>
         </div>
         <div class="text-right">
-          <p class="display text-[2.8rem] text-white leading-none">$500</p>
-          <p class="text-slate-400 text-sm mt-1">/month</p>
+          <p class="display text-[2.8rem] text-[#2D2D2D] leading-none">$500</p>
+          <p class="text-[#6B7280] text-sm mt-1">/month</p>
         </div>
       </div>
 
       <!-- Features list -->
       <ul class="flex flex-col gap-3.5 mb-8" aria-label="Plan features">
-        <li class="flex items-center gap-3 text-base text-slate-300">
-          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        <li class="flex items-center gap-3 text-base text-[#2D2D2D]">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           24/7 SMS lead response in &lt;15 seconds
         </li>
-        <li class="flex items-center gap-3 text-base text-slate-300">
-          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        <li class="flex items-center gap-3 text-base text-[#2D2D2D]">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           3-question qualification conversation
         </li>
-        <li class="flex items-center gap-3 text-base text-slate-300">
-          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        <li class="flex items-center gap-3 text-base text-[#2D2D2D]">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           Automatic calendar booking
         </li>
-        <li class="flex items-center gap-3 text-base text-slate-300">
-          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        <li class="flex items-center gap-3 text-base text-[#2D2D2D]">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           Full conversation transcripts per lead
         </li>
-        <li class="flex items-center gap-3 text-base text-slate-300">
-          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        <li class="flex items-center gap-3 text-base text-[#2D2D2D]">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           CRM integration (Follow Up Boss, kvCORE, more)
         </li>
-        <li class="flex items-center gap-3 text-base text-slate-300">
-          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        <li class="flex items-center gap-3 text-base text-[#2D2D2D]">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           White-glove setup in 48 hours
         </li>
-        <li class="flex items-center gap-3 text-base text-slate-300">
-          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        <li class="flex items-center gap-3 text-base text-[#2D2D2D]">
+          <svg class="flex-shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           Ongoing monitoring and optimization
         </li>
       </ul>
@@ -741,12 +741,12 @@
       </a>
 
       <!-- Pilot callout -->
-      <div class="mt-6 pt-6 border-t border-white/[0.08]">
+      <div class="mt-6 pt-6 border-t border-[#2D2D2D]/[0.10]">
         <div class="flex items-start gap-3">
-          <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg class="flex-shrink-0 mt-0.5" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <div>
-            <p class="text-sm font-semibold text-green-400 mb-1">30-Day Free Pilot</p>
-            <p class="text-base text-slate-400 leading-relaxed" style="font-weight:300;">
+            <p class="text-sm font-semibold text-[#E8614A] mb-1">30-Day Free Pilot</p>
+            <p class="text-base text-[#6B7280] leading-relaxed" style="font-weight:300;">
               The agent runs on your real leads for 30 days at no charge. If it doesn't book appointments you're satisfied with, cancel and pay nothing.
             </p>
           </div>
@@ -761,34 +761,34 @@
 <!-- ════════════════════════════════════════════
      FAQ
 ════════════════════════════════════════════ -->
-<section id="faq" class="py-24 px-4 bg-[#0A0E18]" aria-labelledby="faq-heading">
+<section id="faq" class="py-24 px-4 bg-white" aria-labelledby="faq-heading">
   <div class="max-w-2xl mx-auto">
 
     <!-- Header -->
     <div class="text-center mb-12 reveal">
-      <div class="tag bg-blue-500/10 border border-blue-500/25 text-blue-400 mb-4 inline-flex">
+      <div class="tag bg-[#E8614A]/10 border border-[#E8614A]/25 text-[#E8614A] mb-4 inline-flex">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         Common Questions
       </div>
-      <h2 id="faq-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-white">
+      <h2 id="faq-heading" class="heading text-[clamp(1.6rem,3.5vw,2.3rem)] text-[#2D2D2D]">
         Questions we get every week
       </h2>
     </div>
 
     <!-- FAQ items -->
-    <div class="flex flex-col gap-0 divide-y divide-white/[0.06]" role="list">
+    <div class="flex flex-col gap-0 divide-y divide-[#2D2D2D]/[0.08]" role="list">
 
       <div class="py-5 reveal" role="listitem">
         <button
-          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8614A] rounded"
           aria-expanded="false"
           onclick="toggleFaq(this)"
         >
-          <span class="heading text-base text-white">What leads does this work with?</span>
-          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span class="heading text-base text-[#2D2D2D]">What leads does this work with?</span>
+          <svg class="faq-icon w-5 h-5 text-[#9CA3AF] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
         <div class="faq-body" role="region">
-          <p class="text-slate-400 text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
+          <p class="text-[#6B7280] text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
             Any lead with a phone number: Zillow, Realtor.com, your own website, open house sign-ins, Facebook leads, Google ads, referrals. If they have a mobile number, the agent can follow up. We configure the sources during setup.
           </p>
         </div>
@@ -796,15 +796,15 @@
 
       <div class="py-5 reveal d1" role="listitem">
         <button
-          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8614A] rounded"
           aria-expanded="false"
           onclick="toggleFaq(this)"
         >
-          <span class="heading text-base text-white">Do I need to change my current setup?</span>
-          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span class="heading text-base text-[#2D2D2D]">Do I need to change my current setup?</span>
+          <svg class="faq-icon w-5 h-5 text-[#9CA3AF] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
         <div class="faq-body" role="region">
-          <p class="text-slate-400 text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
+          <p class="text-[#6B7280] text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
             No. The agent slots in alongside whatever you're already using. Keep your CRM, your calendar, your lead sources. We connect to all of it. Setup takes 48 hours and we handle everything.
           </p>
         </div>
@@ -812,15 +812,15 @@
 
       <div class="py-5 reveal d2" role="listitem">
         <button
-          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8614A] rounded"
           aria-expanded="false"
           onclick="toggleFaq(this)"
         >
-          <span class="heading text-base text-white">What happens during the free pilot?</span>
-          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span class="heading text-base text-[#2D2D2D]">What happens during the free pilot?</span>
+          <svg class="faq-icon w-5 h-5 text-[#9CA3AF] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
         <div class="faq-body" role="region">
-          <p class="text-slate-400 text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
+          <p class="text-[#6B7280] text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
             We set up the full agent on your real leads. No sandbox, no fake demos. You watch it run for 30 days. If it books appointments you're satisfied with, you continue at $500/month. If not, you cancel and owe nothing.
           </p>
         </div>
@@ -828,15 +828,15 @@
 
       <div class="py-5 reveal d3" role="listitem">
         <button
-          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8614A] rounded"
           aria-expanded="false"
           onclick="toggleFaq(this)"
         >
-          <span class="heading text-base text-white">How long does setup take?</span>
-          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span class="heading text-base text-[#2D2D2D]">How long does setup take?</span>
+          <svg class="faq-icon w-5 h-5 text-[#9CA3AF] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
         <div class="faq-body" role="region">
-          <p class="text-slate-400 text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
+          <p class="text-[#6B7280] text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
             48 hours from the day you say go. We collect your lead sources, CRM login, and calendar access, then build and test the agent. You don't do any technical work. Most agents are live the next business day.
           </p>
         </div>
@@ -844,15 +844,15 @@
 
       <div class="py-5 reveal d4" role="listitem">
         <button
-          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+          class="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8614A] rounded"
           aria-expanded="false"
           onclick="toggleFaq(this)"
         >
-          <span class="heading text-base text-white">What if a lead asks something complex?</span>
-          <svg class="faq-icon w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span class="heading text-base text-[#2D2D2D]">What if a lead asks something complex?</span>
+          <svg class="faq-icon w-5 h-5 text-[#9CA3AF] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </button>
         <div class="faq-body" role="region">
-          <p class="text-slate-400 text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
+          <p class="text-[#6B7280] text-base leading-relaxed pt-3 pr-8" style="font-weight:300;">
             The agent is trained to stay in its lane. For questions outside the qualification flow, it says something like: "Great question. I'll make sure [your name] covers that when you meet." This keeps the conversation moving toward the appointment rather than derailing it.
           </p>
         </div>
@@ -869,12 +869,12 @@
 ════════════════════════════════════════════ -->
 <section class="py-24 px-4 relative overflow-hidden" aria-labelledby="cta-heading">
   <div class="absolute inset-0 dot-grid opacity-30" aria-hidden="true"></div>
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-blue-500/6 blur-3xl rounded-full pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-[#E8614A]/6 blur-3xl rounded-full pointer-events-none" aria-hidden="true"></div>
   <div class="relative max-w-2xl mx-auto text-center reveal">
-    <h2 id="cta-heading" class="display text-[clamp(1.8rem,4vw,3rem)] text-white mb-5">
+    <h2 id="cta-heading" class="display text-[clamp(1.8rem,4vw,3rem)] text-[#2D2D2D] mb-5">
       Every hour you wait is another lead booking with a competitor.
     </h2>
-    <p class="text-slate-400 text-base leading-relaxed mb-8 max-w-lg mx-auto" style="font-weight:300;">
+    <p class="text-[#6B7280] text-base leading-relaxed mb-8 max-w-lg mx-auto" style="font-weight:300;">
       Start the free 30-day pilot today. We handle the entire setup and you start receiving appointment notifications from leads that would otherwise have gone cold.
     </p>
     <div class="flex flex-wrap gap-4 justify-center">
@@ -883,7 +883,7 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
-    <p class="mt-4 text-sm text-slate-600">No credit card required &nbsp;·&nbsp; Live in 48 hours &nbsp;·&nbsp; Cancel anytime</p>
+    <p class="mt-4 text-sm text-[#9CA3AF]">No credit card required &nbsp;·&nbsp; Live in 48 hours &nbsp;·&nbsp; Cancel anytime</p>
   </div>
 </section>
 
@@ -891,15 +891,15 @@
 <!-- ════════════════════════════════════════════
      FOOTER
 ════════════════════════════════════════════ -->
-<footer class="border-t border-white/[0.06] py-10 px-4" role="contentinfo">
+<footer class="border-t border-[#2D2D2D]/[0.10] py-10 px-4" role="contentinfo">
   <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
 
     <!-- Logo -->
-    <a href="#" class="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded" aria-label="ChauDev home">
-      <div class="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/25 flex items-center justify-center" aria-hidden="true">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    <a href="#" class="flex items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E8614A] rounded" aria-label="ChauDev home">
+      <div class="w-7 h-7 rounded-lg bg-[#E8614A]/10 border border-[#E8614A]/25 flex items-center justify-center" aria-hidden="true">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
-      <span class="heading text-sm tracking-widest">CHAU<span class="text-blue-400">DEV</span></span>
+      <span class="heading text-sm tracking-widest text-[#2D2D2D]">CHAU<span class="text-[#E8614A]">DEV</span></span>
     </a>
 
     <!-- Links -->
@@ -914,7 +914,7 @@
     </nav>
 
     <!-- Copyright -->
-    <p class="text-xs text-slate-600">
+    <p class="text-xs text-[#9CA3AF]">
       &copy; 2025 ChauDev. All rights reserved.
     </p>
 
@@ -1027,8 +1027,8 @@ function renderMessage(msg, index) {
 
     if (msg.type === 'booked') {
       const el = document.createElement('div');
-      el.className = 'chat-bubble-hidden flex items-center gap-2 self-center bg-green-500/12 border border-green-500/25 rounded-full px-4 py-2 text-xs font-semibold text-green-400';
-      el.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>${msg.text}`;
+      el.className = 'chat-bubble-hidden flex items-center gap-2 self-center bg-[#E8614A]/10 border border-[#E8614A]/25 rounded-full px-4 py-2 text-xs font-semibold text-[#E8614A]';
+      el.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E8614A" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>${msg.text}`;
       chatMessages.appendChild(el);
       setTimeout(() => el.classList.add('shown'), 30);
       return;
