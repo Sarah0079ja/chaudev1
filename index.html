@@ -351,41 +351,65 @@
 ════════════════════════════════════════════ -->
 <section class="relative flex items-center justify-center pt-36 pb-24 px-4 bg-white overflow-hidden" aria-labelledby="hero-headline">
 
-  <div class="relative max-w-3xl mx-auto w-full text-center">
+  <div class="relative max-w-6xl mx-auto w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-    <!-- Tag -->
-    <div class="tag bg-[#E8614A]/10 border border-[#E8614A]/25 text-[#E8614A] mb-8 reveal inline-flex">
-      <div class="live-dot" aria-hidden="true"></div>
-      Running 24/7 · Done For You
+      <!-- Left: text + CTA -->
+      <div class="flex flex-col items-start text-left">
+
+        <!-- Tag -->
+        <div class="tag bg-[#E8614A]/10 border border-[#E8614A]/25 text-[#E8614A] mb-8 reveal inline-flex">
+          <div class="live-dot" aria-hidden="true"></div>
+          Running 24/7 · Done For You
+        </div>
+
+        <!-- Headline -->
+        <h1 id="hero-headline" class="display text-[clamp(2.2rem,5.5vw,3.8rem)] text-[#2D2D2D] mb-6 reveal d1">
+          Your leads go cold in 15 minutes.<br>
+          Your AI agent responds<br>
+          in <span class="text-[#E8614A]">15 seconds.</span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-[clamp(1rem,1.8vw,1.15rem)] text-[#6B7280] leading-relaxed mb-10 reveal d2" style="font-weight:300;">
+          Done-for-you AI that texts new leads instantly, qualifies them with 3 questions, and books the appointment. All while you're with other clients.
+        </p>
+
+        <!-- CTA -->
+        <div class="flex flex-col items-start gap-3 reveal d3">
+          <a href="#pricing" class="btn-black">
+            Start Free 30-Day Pilot
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#how-it-works" class="text-sm text-[#9CA3AF] hover:text-[#2D2D2D] transition-colors underline-offset-2 hover:underline">See it in action</a>
+        </div>
+
+      </div>
+
+      <!-- Right: video + social proof -->
+      <div class="flex flex-col items-center reveal d3">
+
+        <!-- Demo video -->
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          poster="assets/chaudev-demo-poster.jpg"
+          class="rounded-2xl border border-[#2D2D2D]/10 shadow-xl w-full"
+          style="max-width:420px;aspect-ratio:1206/1396;"
+        >
+          <source src="assets/chaudev-demo.mp4" type="video/mp4">
+        </video>
+
+        <!-- Social proof -->
+        <p class="mt-6 text-xs text-[#9CA3AF] tracking-wide reveal d4">Used by real estate agents across Miami</p>
+
+        <!-- Trust micro-copy -->
+        <p class="mt-2 text-xs text-[#9CA3AF] reveal d4">No setup fee &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Live in 48 hours</p>
+
+      </div>
+
     </div>
-
-    <!-- Headline -->
-    <h1 id="hero-headline" class="display text-[clamp(2.2rem,5.5vw,3.8rem)] text-[#2D2D2D] mb-6 reveal d1">
-      Your leads go cold in 15 minutes.<br>
-      Your AI agent responds<br>
-      in <span class="text-[#E8614A]">15 seconds.</span>
-    </h1>
-
-    <!-- Subheadline -->
-    <p class="text-[clamp(1rem,1.8vw,1.15rem)] text-[#6B7280] leading-relaxed max-w-xl mx-auto mb-10 reveal d2" style="font-weight:300;">
-      Done-for-you AI that texts new leads instantly, qualifies them with 3 questions, and books the appointment. All while you're with other clients.
-    </p>
-
-    <!-- CTA -->
-    <div class="flex flex-col items-center gap-3 reveal d3">
-      <a href="#pricing" class="btn-black">
-        Start Free 30-Day Pilot
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="#how-it-works" class="text-sm text-[#9CA3AF] hover:text-[#2D2D2D] transition-colors underline-offset-2 hover:underline">See it in action</a>
-    </div>
-
-    <!-- Social proof -->
-    <p class="mt-10 text-xs text-[#9CA3AF] tracking-wide reveal d4">Used by real estate agents across Miami</p>
-
-    <!-- Trust micro-copy -->
-    <p class="mt-3 text-xs text-[#9CA3AF] reveal d4">No setup fee &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Live in 48 hours</p>
-
   </div>
 
 </section>
