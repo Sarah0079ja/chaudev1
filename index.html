@@ -381,7 +381,7 @@
             Start Free 30-Day Pilot
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="#how-it-works" class="text-sm text-[#9CA3AF] hover:text-[#2D2D2D] transition-colors underline-offset-2 hover:underline">See it in action</a>
+          <a href="#how-it-works" class="text-sm text-[#6B7280] hover:text-[#2D2D2D] transition-colors underline-offset-2 hover:underline">See it in action</a>
         </div>
 
       </div>
@@ -390,22 +390,46 @@
       <div class="flex flex-col items-center reveal d3">
 
         <!-- Demo video -->
-        <video
-          controls
-          playsinline
-          preload="metadata"
-          poster="assets/chaudev-demo-poster.jpg"
-          class="rounded-2xl border border-[#2D2D2D]/10 shadow-xl w-full"
-          style="max-width:420px;aspect-ratio:1206/1396;"
-        >
-          <source src="assets/chaudev-demo.mp4" type="video/mp4">
-        </video>
+        <div class="relative" style="max-width:504px;width:100%;">
+          <video
+            id="hero-video"
+            muted
+            loop
+            autoplay
+            playsinline
+            preload="metadata"
+            poster="assets/chaudev-demo-poster.jpg"
+            class="rounded-2xl border border-[#2D2D2D]/10 shadow-xl w-full"
+            style="aspect-ratio:1206/1396;"
+          >
+            <source src="assets/New video .mp4" type="video/mp4">
+          </video>
+          <button
+            id="video-unmute-btn"
+            aria-label="Unmute video"
+            class="absolute bottom-4 right-4 w-9 h-9 rounded-full flex items-center justify-center"
+            style="background:rgba(0,0,0,0.60);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);"
+          >
+            <!-- muted speaker -->
+            <svg id="icon-muted" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <line x1="23" y1="9" x2="17" y2="15"/>
+              <line x1="17" y1="9" x2="23" y2="15"/>
+            </svg>
+            <!-- unmuted speaker (hidden by default) -->
+            <svg id="icon-unmuted" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            </svg>
+          </button>
+        </div>
 
         <!-- Social proof -->
-        <p class="mt-6 text-xs text-[#9CA3AF] tracking-wide reveal d4">Used by real estate agents across Miami</p>
+        <p class="mt-6 text-xs text-[#6B7280] tracking-wide reveal d4">Built for real estate agents closing leads fast.</p>
 
         <!-- Trust micro-copy -->
-        <p class="mt-2 text-xs text-[#9CA3AF] reveal d4">No setup fee &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Live in 48 hours</p>
+        <p class="mt-2 text-xs text-[#6B7280] reveal d4">No setup fee &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; Live in 48 hours</p>
 
       </div>
 
@@ -928,6 +952,42 @@ const counterObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 counterEls.forEach(el => counterObserver.observe(el));
+
+/* ── Hero video: autoplay-on-scroll + unmute toggle ── */
+(function () {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const video = document.getElementById('hero-video');
+  const unmuteBtn = document.getElementById('video-unmute-btn');
+  const iconMuted = document.getElementById('icon-muted');
+  const iconUnmuted = document.getElementById('icon-unmuted');
+
+  if (prefersReduced) {
+    video.removeAttribute('autoplay');
+    video.removeAttribute('muted');
+    video.removeAttribute('loop');
+    video.setAttribute('controls', '');
+    video.muted = false;
+    if (unmuteBtn) unmuteBtn.style.display = 'none';
+    return;
+  }
+
+  // Play when ≥50% visible, pause when scrolled out
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { video.play().catch(() => {}); }
+      else { video.pause(); }
+    });
+  }, { threshold: 0.5 });
+  videoObserver.observe(video);
+
+  // Unmute / mute toggle
+  unmuteBtn.addEventListener('click', () => {
+    video.muted = !video.muted;
+    iconMuted.style.display  = video.muted ? '' : 'none';
+    iconUnmuted.style.display = video.muted ? 'none' : '';
+    unmuteBtn.setAttribute('aria-label', video.muted ? 'Unmute video' : 'Mute video');
+  });
+})();
 
 /* ── FAQ accordion ── */
 function toggleFaq(btn) {
